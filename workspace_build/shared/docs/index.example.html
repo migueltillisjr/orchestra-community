@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Info Pioneer | Find the Hidden Friction Slowing Your Business</title>
+  <meta name="description" content="Take the free Operational Friction Scorecard and see where your business is losing time, creating confusion, or relying too much on manual work." />
+  <style>
+    :root {
+      --bg: #06101f;
+      --bg2: #0a1729;
+      --card: rgba(255,255,255,.075);
+      --card2: rgba(255,255,255,.12);
+      --text: #f8fbff;
+      --muted: #b8c5d8;
+      --line: rgba(255,255,255,.14);
+      --blue: #7dd3fc;
+      --green: #a7f3d0;
+      --gold: #fde68a;
+      --red: #fca5a5;
+      --shadow: 0 24px 90px rgba(0,0,0,.38);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(125,211,252,.24), transparent 34rem),
+        radial-gradient(circle at 92% 4%, rgba(167,243,208,.16), transparent 32rem),
+        linear-gradient(180deg, #06101f 0%, #091628 44%, #06101f 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page { overflow: hidden; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6,16,31,.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 15px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #06101f;
+      box-shadow: 0 16px 42px rgba(125,211,252,.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .18s ease;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #06101f;
+      box-shadow: 0 18px 48px rgba(125,211,252,.26);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.09);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #fde68a, #fbbf24);
+      color: #171005;
+      box-shadow: 0 18px 48px rgba(251,191,36,.2);
+    }
+
+    section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 62px 22px;
+    }
+
+    .hero {
+      padding-top: 74px;
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      align-items: center;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(125,211,252,.34);
+      background: rgba(125,211,252,.09);
+      color: #d7f4ff;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 7px rgba(167,243,208,.14);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 80px);
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(31px, 4.5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    p { margin: 0; }
+    .gradient {
+      background: linear-gradient(135deg, #fff 5%, #bae6fd 54%, #bbf7d0 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy, .section-copy {
+      color: var(--muted);
+      font-size: 19px;
+      margin-top: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .mini-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .funnel-card {
+      position: relative;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .funnel-card:before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(125,211,252,.34), transparent, rgba(167,243,208,.24));
+    }
+
+    .card-kicker {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      margin-bottom: 7px;
+    }
+
+    .card-title {
+      font-size: 30px;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+    }
+
+    .bonus-box {
+      margin: 18px 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(253,230,138,.1);
+      border: 1px solid rgba(253,230,138,.28);
+    }
+
+    .bonus-box strong { color: var(--gold); }
+
+    .form {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(6,16,31,.58);
+      border: 1px solid var(--line);
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 13px;
+      font: inherit;
+      outline: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.48); }
+    select { color: rgba(255,255,255,.78); }
+    textarea { min-height: 96px; resize: vertical; grid-column: 1/-1; }
+
+    .form .btn { width: 100%; margin-top: 12px; }
+    .micro { color: rgba(255,255,255,.56); font-size: 12px; text-align: center; margin-top: 10px; }
+
+    .label {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 12px 42px rgba(0,0,0,.12);
+    }
+
+    .card p { color: var(--muted); }
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(125,211,252,.13);
+      color: var(--blue);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .story-panel {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(125,211,252,.15), rgba(167,243,208,.08));
+    }
+
+    .beliefs { display: grid; gap: 14px; }
+
+    .belief {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.065);
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+    }
+
+    .belief span {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(167,243,208,.12);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .value-ladder {
+      display: grid;
+      gap: 14px;
+      counter-reset: ladder;
+    }
+
+    .ladder-step {
+      counter-increment: ladder;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      background: rgba(255,255,255,.07);
+      display: grid;
+      grid-template-columns: 58px 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .ladder-step:before {
+      content: counter(ladder);
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(125,211,252,.13);
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .tag {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid rgba(167,243,208,.28);
+      color: var(--green);
+      background: rgba(167,243,208,.08);
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .offer-box {
+      border: 1px solid rgba(125,211,252,.32);
+      background: linear-gradient(180deg, rgba(125,211,252,.13), rgba(255,255,255,.055));
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .price {
+      font-size: 43px;
+      font-weight: 950;
+      letter-spacing: -.05em;
+      line-height: 1;
+      margin: 14px 0;
+    }
+
+    .list {
+      list-style: none;
+      margin: 20px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 11px;
+    }
+
+    .list li {
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .list li:before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .application {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at top right, rgba(253,230,138,.12), transparent 22rem),
+        rgba(255,255,255,.065);
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .question {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: rgba(6,16,31,.52);
+      border-radius: 16px;
+      color: var(--muted);
+    }
+
+    .email-seq {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(130px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .email {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.065);
+      padding: 16px;
+      min-height: 145px;
+    }
+
+    .email strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .email p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .final {
+      text-align: center;
+      max-width: 900px;
+      padding-bottom: 86px;
+    }
+
+    .final .hero-actions { justify-content: center; }
+
+    .footer {
+      padding: 26px 22px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,.55);
+      font-size: 14px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-card {
+      width: min(760px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: #0b1729;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .score-question {
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      border-radius: 16px;
+      margin: 12px 0;
+    }
+
+    .score-question label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .range-wrap {
+      display: grid;
+      grid-template-columns: 1fr 42px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    input[type=range] { accent-color: #7dd3fc; padding: 0; }
+    .range-value { color: var(--green); font-weight: 900; text-align: right; }
+
+    .result {
+      display: none;
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(167,243,208,.1);
+      border: 1px solid rgba(167,243,208,.24);
+    }
+
+    .result strong { color: var(--green); }
+
+    @media (max-width: 980px) {
+      .hero, .story, .stack, .application { grid-template-columns: 1fr; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr 1fr; }
+      .email-seq { grid-template-columns: repeat(7, 210px); }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      section { padding: 48px 18px; }
+      .hero { padding-top: 52px; }
+      .grid-3, .grid-2, .field-grid { grid-template-columns: 1fr; }
+      .ladder-step { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .hero-actions { width: 100%; }
+      .funnel-card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <span class="mark">IP</span>
+          <span>Info Pioneer</span>
+        </a>
+        <div class="nav-links">
+          <a href="#scorecard">Free scorecard</a>
+          <a href="#story">Why this works</a>
+          <a href="#ladder">Value ladder</a>
+          <a href="#audit">Audit</a>
+        </div>
+        <a class="btn btn-primary" href="#scorecard">Find the friction</a>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> Free diagnostic for growing teams</div>
+          <h1><span class="gradient">Your team is not lazy.</span><br />Your workflow is leaking time.</h1>
+          <p class="hero-copy">
+            Take the free Operational Friction Scorecard and see where your business is losing time, repeating work, creating confusion, or underusing tools you already pay for.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#scorecard">Take the free scorecard</a>
+            <a class="btn btn-secondary" href="#story">See the hidden cause</a>
+          </div>
+          <div class="mini-proof">
+            <span class="pill">No pressure pitch</span>
+            <span class="pill">Clear next steps</span>
+            <span class="pill">Built for small and mid-sized businesses</span>
+            <span class="pill">Remote-first across the United States</span>
+          </div>
+        </div>
+
+        <aside class="funnel-card" id="scorecard">
+          <div class="card-kicker">Lead magnet</div>
+          <h2 class="card-title">Operational Friction Scorecard</h2>
+          <p class="section-copy" style="font-size:16px;margin-top:10px;">
+            Find the 1–3 operational issues most likely creating unnecessary pain in your business.
+          </p>
+
+          <div class="bonus-box">
+            <strong>Free bonus:</strong> After you complete the scorecard, you will also get the “Before You Buy More Software” checklist so you can avoid fixing a process problem with another tool.
+          </div>
+
+          <form class="form" onsubmit="event.preventDefault(); openModal();">
+            <h3>Start with the free scorecard</h3>
+            <p style="color:var(--muted);font-size:14px;">Step 1: get your score. Step 2: share a little context if you want a better recommendation.</p>
+            <div class="field-grid">
+              <input type="text" placeholder="Name" required />
+              <input type="email" placeholder="Email" required />
+              <input type="text" placeholder="Business name" />
+              <select aria-label="Business size">
+                <option value="">Business size</option>
+                <option>Solo operator</option>
+                <option>2–10 people</option>
+                <option>11–50 people</option>
+                <option>51–200 people</option>
+                <option>200+ people</option>
+              </select>
+              <select aria-label="Biggest issue">
+                <option value="">Biggest issue right now</option>
+                <option>Repeated admin work</option>
+                <option>Scattered documentation</option>
+                <option>Unclear handoffs</option>
+                <option>Tool confusion</option>
+                <option>Growth is creating chaos</option>
+              </select>
+              <select aria-label="Timeline">
+                <option value="">Timeline</option>
+                <option>Now</option>
+                <option>Next 30 days</option>
+                <option>Next quarter</option>
+                <option>Just exploring</option>
+              </select>
+              <textarea placeholder="What feels most repetitive, messy, or confusing?"></textarea>
+            </div>
+            <button class="btn btn-gold" type="submit">Reveal my friction score</button>
+            <div class="micro">The scorecard helps you see the issue before you decide whether to book a call.</div>
+          </form>
+        </aside>
+      </section>
+
+      <section id="story" class="story">
+        <div class="story-panel">
+          <div class="label">Hook · Story · Offer</div>
+          <h2>The problem usually is not effort. It is operating drag.</h2>
+          <p class="section-copy">
+            When a business grows, the old way of working starts to crack. Work that used to be simple becomes scattered across inboxes, meetings, spreadsheets, notes, and half-used software. The team keeps moving, but more energy leaks into rework, repeated questions, and unclear ownership.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#scorecard">Find your operating drag</a>
+          </div>
+        </div>
+
+        <div class="beliefs">
+          <div class="belief">
+            <span>1</span>
+            <div>
+              <h3>Old belief: “We need another tool.”</h3>
+              <p>New belief: Most teams should improve the workflow before buying more software.</p>
+            </div>
+          </div>
+          <div class="belief">
+            <span>2</span>
+            <div>
+              <h3>Old belief: “People just need to communicate better.”</h3>
+              <p>New belief: Clear handoffs, ownership, and documentation make better communication easier.</p>
+            </div>
+          </div>
+          <div class="belief">
+            <span>3</span>
+            <div>
+              <h3>Old belief: “Process improvement will slow us down.”</h3>
+              <p>New belief: The right process removes preventable back-and-forth and helps good people move faster.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Who this is for</div>
+        <h2>Best fit for businesses ready to fix the friction, not just talk about it.</h2>
+        <p class="section-copy">This funnel qualifies leads by pain, readiness, and fit before asking for a serious conversation.</p>
+        <div class="grid-3" style="margin-top:26px;">
+          <div class="card">
+            <div class="icon">↻</div>
+            <h3>Growing teams</h3>
+            <p>Teams with repeated questions, manual handoffs, or work trapped with a few key people.</p>
+          </div>
+          <div class="card">
+            <div class="icon">▤</div>
+            <h3>Service businesses</h3>
+            <p>Consultancies, operations teams, agencies, and founder-led businesses that need smoother delivery.</p>
+          </div>
+          <div class="card">
+            <div class="icon">◉</div>
+            <h3>Tool-heavy businesses</h3>
+            <p>Organizations paying for software but lacking a consistent internal operating system around it.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ladder">
+        <div class="label">Value ladder</div>
+        <h2>A clear path from free insight to paid implementation.</h2>
+        <p class="section-copy">Each step gives value and naturally leads to the next step only when the problem is worth solving.</p>
+
+        <div class="value-ladder" style="margin-top:28px;">
+          <div class="ladder-step">
+            <div>
+              <h3>Operational Friction Scorecard</h3>
+              <p style="color:var(--muted);">Free self-assessment to identify where work is leaking time and attention.</p>
+            </div>
+            <span class="tag">Free</span>
+          </div>
+          <div class="ladder-step">
+            <div>
+              <h3>Workflow Clarity Call</h3>
+              <p style="color:var(--muted);">Short diagnostic call to review the score and find the highest-impact improvement opportunity.</p>
+            </div>
+            <span class="tag">Consultation</span>
+          </div>
+          <div class="ladder-step">
+            <div>
+              <h3>Workflow Audit</h3>
+              <p style="color:var(--muted);">Focused review of processes, tools, handoffs, documentation, and bottlenecks.</p>
+            </div>
+            <span class="tag">First paid step</span>
+          </div>
+          <div class="ladder-step">
+            <div>
+              <h3>Implementation Project</h3>
+              <p style="color:var(--muted);">Build or refine workflows, SOPs, knowledge bases, and internal systems.</p>
+            </div>
+            <span class="tag">Core offer</span>
+          </div>
+          <div class="ladder-step">
+            <div>
+              <h3>Ongoing Advisory Support</h3>
+              <p style="color:var(--muted);">Monthly refinement, documentation updates, training, and operational guidance.</p>
+            </div>
+            <span class="tag">Continuity</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="audit" class="stack">
+        <div class="offer-box">
+          <div class="label">Main offer</div>
+          <h2>Workflow Audit</h2>
+          <p class="section-copy">A focused review of your current processes, tools, documentation, and handoffs with clear recommendations.</p>
+          <div class="price">$3k–$20k</div>
+          <p style="color:var(--muted);">Project-based engagements are sized around complexity, number of teams involved, and implementation support required.</p>
+          <ul class="list">
+            <li>Workflow assessment and friction map</li>
+            <li>Tool usage review before recommending new software</li>
+            <li>Prioritized action plan</li>
+            <li>Process maps and SOP opportunities</li>
+            <li>Training or handoff recommendations</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#scorecard">Start with the scorecard</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="label">Offer stack</div>
+          <h2 style="font-size:40px;">What you walk away with.</h2>
+          <ul class="list">
+            <li>A clear view of where work slows down</li>
+            <li>A practical explanation of what should change first</li>
+            <li>A simple plan your team can understand</li>
+            <li>Recommendations that favor existing tools before adding new ones</li>
+            <li>Optional implementation support if the audit reveals a high-value project</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="application">
+        <div>
+          <div class="label">Application, not pressure</div>
+          <h2>Not every business needs a project.</h2>
+          <p class="section-copy">
+            The funnel should protect both sides. The scorecard and clarity call help determine whether there is a real operational issue, whether it matters enough to fix, and whether Info Pioneer is the right partner.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="#scorecard">Apply through the scorecard</a>
+          </div>
+        </div>
+        <div class="question-list">
+          <div class="question">What problem are you trying to fix?</div>
+          <div class="question">How long has this been slowing the business down?</div>
+          <div class="question">What happens if it does not get fixed?</div>
+          <div class="question">Who is involved in the workflow?</div>
+          <div class="question">Are you looking for recommendations only, or implementation too?</div>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Follow-up funnel</div>
+        <h2>The sale happens after trust is built.</h2>
+        <p class="section-copy">After someone takes the scorecard, the nurture sequence should educate, reframe the problem, and make the audit feel like the obvious next step.</p>
+
+        <div class="email-seq" style="margin-top:26px;">
+          <div class="email"><strong>Email 1</strong><p>Deliver the scorecard and ask about the biggest friction point.</p></div>
+          <div class="email"><strong>Email 2</strong><p>Explain the real cost of messy handoffs.</p></div>
+          <div class="email"><strong>Email 3</strong><p>Give a quick win before buying another tool.</p></div>
+          <div class="email"><strong>Email 4</strong><p>Show a before-and-after workflow example.</p></div>
+          <div class="email"><strong>Email 5</strong><p>Address fear that process improvement becomes a huge project.</p></div>
+          <div class="email"><strong>Email 6</strong><p>Offer the Workflow Clarity Call.</p></div>
+          <div class="email"><strong>Email 7</strong><p>Close the loop without pressure.</p></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="label">Outcomes</div>
+        <h2>When the workflow gets clearer, the business gets lighter.</h2>
+        <div class="grid-3" style="margin-top:26px;">
+          <div class="card">
+            <h3>Less repeated work</h3>
+            <p>Reduce manual tasks, duplicate effort, and preventable back-and-forth.</p>
+          </div>
+          <div class="card">
+            <h3>Better handoffs</h3>
+            <p>Clarify who owns what, what happens next, and where information should live.</p>
+          </div>
+          <div class="card">
+            <h3>Stronger growth foundation</h3>
+            <p>Build systems your team can maintain as the business becomes more complex.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="final">
+        <div class="label">Next step</div>
+        <h2>Find the hidden friction before you fix the wrong problem.</h2>
+        <p class="section-copy">
+          Start with the free Operational Friction Scorecard. Then decide whether a Workflow Clarity Call or paid Workflow Audit makes sense.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#scorecard">Take the free scorecard</a>
+          <a class="btn btn-secondary" href="mailto:hello@infopioneer.com?subject=Workflow%20Clarity%20Call">Request a Workflow Clarity Call</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      Info Pioneer · Business process improvement and practical technology consulting · United States, remote-first
+    </footer>
+  </div>
+
+  <div class="modal" id="scoreModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" onclick="closeModal()" aria-label="Close scorecard">×</button>
+      <div class="label">Operational Friction Scorecard</div>
+      <h2 style="font-size:38px;">Rate each area from 1 to 5.</h2>
+      <p class="section-copy">1 means low friction. 5 means high friction. Your result helps decide whether a Workflow Audit is worth exploring.</p>
+
+      <div id="questions"></div>
+
+      <button class="btn btn-gold" style="width:100%;margin-top:14px;" onclick="calculateScore()">Calculate my friction score</button>
+
+      <div class="result" id="result">
+        <h3 id="resultTitle" style="margin:0 0 8px;"></h3>
+        <p id="resultText" style="margin:0;color:var(--muted);"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:hello@infopioneer.com?subject=Workflow%20Clarity%20Call">Book a Workflow Clarity Call</a>
+          <button class="btn btn-secondary" onclick="closeModal()">Keep reviewing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("scoreModal");
+    const questionsEl = document.getElementById("questions");
+    const questions = [
+      "Processes are clear and repeatable",
+      "Important knowledge is documented",
+      "Tools are used consistently",
+      "Team handoffs are clear",
+      "Repetitive work has been reduced",
+      "People know where to find answers",
+      "Private or sensitive information is handled carefully"
+    ];
+
+    questionsEl.innerHTML = questions.map((q, i) => `
+      <div class="score-question">
+        <label for="q${i}">${q}</label>
+        <div class="range-wrap">
+          <input type="range" id="q${i}" min="1" max="5" value="3" oninput="document.getElementById('v${i}').textContent=this.value" />
+          <div class="range-value" id="v${i}">3</div>
+        </div>
+      </div>
+    `).join("");
+
+    function openModal() {
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    function calculateScore() {
+      const values = questions.map((_, i) => Number(document.getElementById(`q${i}`).value));
+      const total = values.reduce((a, b) => a + b, 0);
+      const max = questions.length * 5;
+      const percent = Math.round((total / max) * 100);
+      const title = document.getElementById("resultTitle");
+      const text = document.getElementById("resultText");
+      const result = document.getElementById("result");
+
+      if (percent < 45) {
+        title.innerHTML = `Low to moderate friction: <strong>${percent}%</strong>`;
+        text.textContent = "Your systems may be working reasonably well, but small improvements could still save time and reduce confusion.";
+      } else if (percent < 70) {
+        title.innerHTML = `Moderate friction: <strong>${percent}%</strong>`;
+        text.textContent = "Your team likely has recurring workflow issues worth addressing. A Workflow Clarity Call can help identify the highest-impact fix.";
+      } else {
+        title.innerHTML = `High friction: <strong>${percent}%</strong>`;
+        text.textContent = "Your business may be carrying operational strain from unclear handoffs, scattered documentation, repeated work, or underused tools. This is a strong fit for a Workflow Audit.";
+      }
+
+      result.style.display = "block";
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+</body>
+</html>

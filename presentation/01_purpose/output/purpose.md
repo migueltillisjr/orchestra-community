@@ -1,0 +1,1 @@
+The purpose of this presentation is to inform employees and stakeholders about a new cybersecurity protocol, including MFA, regular security audits, and employee training.

@@ -1,0 +1,1 @@
+The audience for this presentation includes all employees of a tech-related company, such as full-time, part-time, managers, remote workers, and anyone who accesses organizational accounts or sensitive information.

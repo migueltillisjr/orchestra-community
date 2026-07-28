@@ -1,0 +1,21 @@
+Use the uploaded reference images as the same person throughout the video.
+
+Create an 8-second professional business video featuring me as the founder of an AI operations consulting company.
+
+Scene:
+I am sitting at a modern desk reviewing a business workflow dashboard on a laptop. The environment feels clean, focused, and professional. The camera slowly pushes in as the messy workflow on the screen becomes organized into a clear process map.
+
+Appearance:
+Preserve the same person from the reference images. Keep the face, hairstyle, skin tone, and general appearance consistent. Make the person look natural and realistic.
+
+Style:
+Modern business commercial, cinematic lighting, realistic office environment, shallow depth of field, confident but approachable mood.
+
+Motion:
+Slow camera push-in, subtle hand movement, natural expression, smooth transition from operational chaos to clarity.
+
+Audio:
+Soft modern background music. No spoken words.
+
+Avoid:
+No logos, no celebrity resemblance, no fake endorsement, no political message, no misleading claims, no medical claims, no financial guarantees.

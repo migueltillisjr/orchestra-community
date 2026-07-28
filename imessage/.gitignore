@@ -1,0 +1,27 @@
+# Secrets
+.env
+.imessage
+
+# AI Defense
+06_final_polish/references/AI_DEFENSE.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.presentation/
+.report/
+.ethics/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
