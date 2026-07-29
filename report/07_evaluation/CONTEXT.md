@@ -36,7 +36,7 @@ For EACH criterion in `report/shared/references/RUBRIC.md`, answer YES/NO verifi
 
 ## Output
 
-**Use the `write` tool to save to `report/07_evaluation/output/evaluation.md`.**
+**Use the `write` tool to save the evaluation report to the full repository-relative path `report/07_evaluation/output/evaluation.md`.**
 
 The output file MUST contain:
 
@@ -77,3 +77,9 @@ On subsequent runs, append a unique run ID (timestamp) to the filename:
 Generate the timestamp using `bash`: `date +%Y%m%d_%H%M%S`
 
 **REMINDER: Use the `write` tool to create this file on disk. Do not just display in chat.**
+
+## Rules
+
+- Treat every file reference as a full repository-relative path.
+- Always use the write tool to create the required outputs on disk at the exact paths specified here.
+- Do not rely on chat-only output.

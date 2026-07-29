@@ -24,7 +24,7 @@ Read `report/05_revision/output/revised_draft.md` for the revised report.
 
 ## Output
 
-Write the following to `report/06_final_polish/output/`:
+Use the write tool to save the following files to disk at the full repository-relative paths below:
 
 | File | Contents |
 |------|----------|
@@ -37,3 +37,9 @@ On subsequent runs, append a unique run ID (timestamp) to the filename:
 - Subsequent runs: `final_report_<YYYYMMDD_HHMMSS>.md`
 
 Generate the timestamp using `bash`: `date +%Y%m%d_%H%M%S`
+
+## Rules
+
+- Treat every file reference as a full repository-relative path.
+- Always use the write tool to create the required outputs on disk at the exact paths specified here.
+- Do not rely on chat-only output.

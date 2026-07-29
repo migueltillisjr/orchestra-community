@@ -30,9 +30,11 @@ The user can **skip stages** or **jump to a specific stage** at any time. If the
 
 ## Critical Behavior
 
-1. **Always use the `write` tool to save output files to disk.** Do not just display content in chat — you must physically create the files in the `output/` directory for each stage.
+1. **Always use the `write` tool to save output files to disk.** Do not just display content in chat — you must physically create the files in the stage `output/` directory for each stage.
 2. **Read reference files using the `read` tool before asking questions.** The topic and requirements are already on disk.
 3. **Never advance to the next stage without writing output files.** Use `write` to create every file listed in the stage's Output table.
+4. **Every output reference must include the full repository-relative path.** Do not refer to outputs by bare filenames alone; always use paths such as `report/01_topic_and_scope/output/scope.md`.
+5. **All generated content must be written to a file.** If you produce text, analysis, or draft content, save it to the appropriate file path before moving on.
 
 ---
 
@@ -42,6 +44,8 @@ The user can **skip stages** or **jump to a specific stage** at any time. If the
 - Cite sources properly (APA, MLA, or Chicago — ask the user which they need).
 - Avoid plagiarism — paraphrase and attribute ideas to their sources.
 - Keep paragraphs focused and well-structured with topic sentences and transitions.
+- When a stage requires output, always create the target file at the full path shown in the stage table and do not stop at chat-only output.
+- If the output file path is not obvious, resolve it from the stage's `CONTEXT.md` and use the full repository-relative path.
 
 ## References (READ FIRST)
 
@@ -80,7 +84,7 @@ START → Step 1 → Step 2 → Step 3 → Step 4 → Step 5 → Step 6 → Step
 
 ## Stage I/O (MANDATORY)
 
-**You MUST use the `write` tool to create output files on disk when completing each stage.** Do not just show content in chat. Each stage's `CONTEXT.md` specifies exactly what files to create. The next stage depends on these files existing on disk.
+**You MUST use the `write` tool to create output files on disk when completing each stage.** Do not just show content in chat. Each stage's `CONTEXT.md` specifies exactly what files to create. The next stage depends on these files existing on disk. Always use the full path shown in the stage table (for example `report/04_drafting/output/draft.md`), not just `draft.md`.
 
 | Step | Reads from (input) | Writes to (output) |
 |------|-------------------|-------------------|

@@ -17,7 +17,7 @@ Read `report/shared/references/REQUIREMENTS.md` and `report/shared/references/RU
 
 ## Output
 
-**Use the `write` tool to save the revised report to `report/08_revision_pass/output/`.**
+**Use the `write` tool to save the revised report to the full repository-relative path `report/08_revision_pass/output/revised_report.md`.**
 
 | File | Contents |
 |------|----------|
@@ -30,3 +30,9 @@ On subsequent runs, append a unique run ID (timestamp) to the filename:
 - Subsequent runs: `revised_report_<YYYYMMDD_HHMMSS>.md`
 
 Generate the timestamp using `bash`: `date +%Y%m%d_%H%M%S`
+
+## Rules
+
+- Treat every file reference as a full repository-relative path.
+- Always use the write tool to create the required outputs on disk at the exact paths specified here.
+- Do not rely on chat-only output.

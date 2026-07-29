@@ -15,7 +15,7 @@ Write the report one section at a time. After each section:
 
 ## Output
 
-Write the following to `report/04_drafting/output/`:
+Use the write tool to save the following files to disk at the full repository-relative paths below:
 
 | File | Contents |
 |------|----------|
@@ -28,3 +28,9 @@ On subsequent runs, append a unique run ID (timestamp) to the filename:
 - Subsequent runs: `draft_<YYYYMMDD_HHMMSS>.md`
 
 Generate the timestamp using `bash`: `date +%Y%m%d_%H%M%S`
+
+## Rules
+
+- Treat every file reference as a full repository-relative path.
+- Always use the write tool to create the required outputs on disk at the exact paths specified here.
+- Do not rely on chat-only output.
