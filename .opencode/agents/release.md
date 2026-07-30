@@ -40,16 +40,18 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
 - Generate a changelog summary after examining repository changes and set it as `{{ CHANGE_SUMMARY }}`.
 - Deterministic summary procedure (required, preferred):
   ```bash
-  ./run_release_from_changes.sh
-  ```
-- Legacy equivalent (only when debugging):
-  ```bash
   ./run_generate_changes.sh
-  CHANGE_SUMMARY="$(./run_extract_change_summary.sh)"
-  ./run_release.sh --summary "$CHANGE_SUMMARY"
-  rm -f CHANGES.md
   ```
-- Do not read the full `CHANGES.md` file into agent context. Use `./run_extract_change_summary.sh` only.
-- Populate `{{ CHANGE_SUMMARY }}` from the extractor script output.
-- Manual fallback summary is forbidden. If summary extraction fails or returns placeholder-like text, stop and report the blocker. Do not run `./run_release.sh --summary "Manual summary ..."`.
+- Create `{{ CHANGE_SUMMARY }}` yourself (AI-authored) from `CHANGES.md`.
+- Summary quality requirements:
+  - One sentence, 12-30 words.
+  - Mention primary files/scope changed.
+  - Mention the functional outcome.
+  - Do not use auto-count template summaries (for example: `Updated N files across ... (A:x M:y D:z R:w) ...`).
+- Deterministic release execution:
+  ```bash
+  ./run_release_from_changes.sh --summary "{{ CHANGE_SUMMARY }}"
+  ```
+- Do not read the full `CHANGES.md` file into agent context. Use targeted extraction only (for example staged file status/files and specific diff hunks when needed).
+- Manual fallback summary is forbidden. If you cannot generate a descriptive summary from `CHANGES.md`, stop and report the blocker.
 - Deterministic script-first rule: when release creation is requested, run the procedure above as the default implementation. Only deviate if a script exits with a reported blocker.

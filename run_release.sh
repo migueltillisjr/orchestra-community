@@ -4,8 +4,7 @@ set -euo pipefail
 
 # Deterministic release script for this repository.
 # Usage:
-#   ./run_release.sh
-#   ./run_release.sh --summary "Custom release summary"
+#   ./run_release.sh --summary "AI-authored release summary"
 
 SUMMARY_OVERRIDE=""
 
@@ -29,6 +28,22 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [[ -z "${SUMMARY_OVERRIDE// }" ]]; then
+  echo "Error: --summary is required. This script does not generate release summaries." >&2
+  exit 1
+fi
+
+summary_word_count="$(echo "$SUMMARY_OVERRIDE" | awk '{print NF}')"
+if [[ "$summary_word_count" -lt 8 ]]; then
+  echo "Error: --summary is too short (${summary_word_count} words). Provide a descriptive AI-authored summary." >&2
+  exit 1
+fi
+
+if echo "$SUMMARY_OVERRIDE" | grep -Eiq '^updated [0-9]+ files across .+\(A:[0-9]+ M:[0-9]+ D:[0-9]+ R:[0-9]+\)'; then
+  echo "Error: --summary appears to be an auto-generated count template. Provide a descriptive AI-authored summary instead." >&2
+  exit 1
+fi
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
@@ -157,18 +172,7 @@ while true; do
   next_patch=$((next_patch + 1))
 done
 
-staged_stats="$(git diff --cached --name-status)"
-file_count="$(git diff --cached --name-only | wc -l | tr -d ' ')"
-added_count="$(echo "$staged_stats" | awk '$1=="A" {c++} END {print c+0}')"
-modified_count="$(echo "$staged_stats" | awk '$1=="M" {c++} END {print c+0}')"
-deleted_count="$(echo "$staged_stats" | awk '$1=="D" {c++} END {print c+0}')"
-primary_files="$(git diff --cached --name-only | head -5 | paste -sd ', ' -)"
-
-if [[ -n "$SUMMARY_OVERRIDE" ]]; then
-  summary="$SUMMARY_OVERRIDE"
-else
-  summary="Release prep: updated ${file_count} file(s) (A:${added_count} M:${modified_count} D:${deleted_count}); primary scope: ${primary_files}."
-fi
+summary="$SUMMARY_OVERRIDE"
 
 existing_changelog="$(cat CHANGELOG.md)"
 printf "## %s\n\n* %s\n\n%s" "$candidate" "$summary" "$existing_changelog" > CHANGELOG.md

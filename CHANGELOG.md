@@ -1,6 +1,10 @@
+## release/1.0.15
+
+* Improved release readiness and deployment reliability by updating release scripts and CHANGELOG.md.
+
 ## release/1.0.14
 
-* Updated 2 files across run_release_from_changes.sh, .opencode (A:1 M:1 D:0 R:0) to improve release readiness and deployment reliability.
+* Added a fail-closed release wrapper and updated release-agent rules so manual placeholder summaries are blocked and deterministic releases stop on summary-quality failures.
 
 ## release/1.0.13
 
