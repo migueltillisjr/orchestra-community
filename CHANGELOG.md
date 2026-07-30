@@ -1,3 +1,7 @@
+## release/1.0.13
+
+* Manual summary due to script failure.
+
 ## release/1.0.12
 
 * Updated.opencode/agents/release.md, run_extract_change_summary.sh, and run_generate_changes.sh to improve release readiness and deployment reliability.

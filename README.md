@@ -5,6 +5,8 @@ This repository contains the helper assets used to work with Orchestra agent rep
 ## What is in this repo?
 
 - [run-clone_agent_repo.sh](run-clone_agent_repo.sh) — clones a Git repository into the Orchestra workspace via the server endpoint.
+- [run_generate_changes.sh](run_generate_changes.sh) — builds a deterministic CHANGES.md from staged repository changes.
+- [run_extract_change_summary.sh](run_extract_change_summary.sh) — extracts a concise one-line summary from CHANGES.md.
 - [run_release.sh](run_release.sh) — deterministic release script that handles versioning, changelog updates, commit, push, and tag creation.
 - [example-env](example-env) — a minimal environment template for the clone script.
 - [NOTES.md](NOTES.md) — operational notes and example commands.
@@ -70,6 +72,15 @@ For deterministic/scripted releases, run:
 
 ```bash
 ./run_release.sh
+```
+
+For deterministic release with generated summary (recommended):
+
+```bash
+./run_generate_changes.sh
+CHANGE_SUMMARY="$(./run_extract_change_summary.sh)"
+./run_release.sh --summary "$CHANGE_SUMMARY"
+rm -f CHANGES.md
 ```
 
 ## Notes
