@@ -1,3 +1,7 @@
+## release/1.0.14
+
+* Updated 2 files across run_release_from_changes.sh, .opencode (A:1 M:1 D:0 R:0) to improve release readiness and deployment reliability.
+
 ## release/1.0.13
 
 * Manual summary due to script failure.

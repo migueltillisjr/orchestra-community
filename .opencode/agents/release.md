@@ -38,7 +38,11 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
 
 - Only trigger when the user's message clearly asks to create a release (for example: "create release", "cut a release", "tag a release", "release now").
 - Generate a changelog summary after examining repository changes and set it as `{{ CHANGE_SUMMARY }}`.
-- Deterministic summary procedure (required):
+- Deterministic summary procedure (required, preferred):
+  ```bash
+  ./run_release_from_changes.sh
+  ```
+- Legacy equivalent (only when debugging):
   ```bash
   ./run_generate_changes.sh
   CHANGE_SUMMARY="$(./run_extract_change_summary.sh)"
@@ -47,4 +51,5 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
   ```
 - Do not read the full `CHANGES.md` file into agent context. Use `./run_extract_change_summary.sh` only.
 - Populate `{{ CHANGE_SUMMARY }}` from the extractor script output.
+- Manual fallback summary is forbidden. If summary extraction fails or returns placeholder-like text, stop and report the blocker. Do not run `./run_release.sh --summary "Manual summary ..."`.
 - Deterministic script-first rule: when release creation is requested, run the procedure above as the default implementation. Only deviate if a script exits with a reported blocker.
