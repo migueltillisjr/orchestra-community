@@ -29,6 +29,8 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
 
 - Remove entries from the `CHANGELOG.md` file
 - Anything outside of the scope of the changes defined in this file
+- Edit, overwrite, or patch `CHANGES.md` (it is a read-only intermediate artifact)
+- Persist `{{ CHANGE_SUMMARY }}` into `CHANGES.md` or any other file
 
 ## Always Do This
 
@@ -40,7 +42,7 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
 - Generate a changelog summary after examining repository changes and set it as `{{ CHANGE_SUMMARY }}`.
 - Deterministic summary procedure (required, preferred):
   ```bash
-  ./run_generate_changes.sh
+  ./release/run_generate_changes.sh
   ```
 - Create `{{ CHANGE_SUMMARY }}` yourself (AI-authored) from `CHANGES.md`.
 - Summary quality requirements:
@@ -50,8 +52,10 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
   - Do not use auto-count template summaries (for example: `Updated N files across ... (A:x M:y D:z R:w) ...`).
 - Deterministic release execution:
   ```bash
-  ./run_release_from_changes.sh --summary "{{ CHANGE_SUMMARY }}"
+  ./release/run_release_from_changes.sh --summary "{{ CHANGE_SUMMARY }}"
   ```
+- In-memory handoff rule: keep `{{ CHANGE_SUMMARY }}` in memory only and execute the release command immediately after composing it. Do not edit any file to store the summary first.
 - Do not read the full `CHANGES.md` file into agent context. Use targeted extraction only (for example staged file status/files and specific diff hunks when needed).
+- CHANGES artifact rule: `CHANGES.md` is for analysis only. Read selectively, summarize, run release, then allow scripts to clean it up.
 - Manual fallback summary is forbidden. If you cannot generate a descriptive summary from `CHANGES.md`, stop and report the blocker.
 - Deterministic script-first rule: when release creation is requested, run the procedure above as the default implementation. Only deviate if a script exits with a reported blocker.

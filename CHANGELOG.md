@@ -1,3 +1,7 @@
+## release/1.0.16
+
+* Updated release scripts and documentation to ensure correct location and added necessary parameters and logic.
+
 ## release/1.0.15
 
 * Improved release readiness and deployment reliability by updating release scripts and CHANGELOG.md.

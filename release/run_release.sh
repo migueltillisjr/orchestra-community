@@ -10,6 +10,10 @@ SUMMARY_OVERRIDE=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --summary=*)
+      SUMMARY_OVERRIDE="${1#*=}"
+      shift
+      ;;
     --summary)
       if [[ $# -lt 2 ]]; then
         echo "Error: --summary requires a value." >&2

@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # One-command deterministic release flow:
 # 1) Generate CHANGES.md from staged changes
 # 2) Require AI-authored CHANGE_SUMMARY via --summary
@@ -12,6 +14,10 @@ SUMMARY_OVERRIDE=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --summary=*)
+      SUMMARY_OVERRIDE="${1#*=}"
+      shift
+      ;;
     --summary)
       if [[ $# -lt 2 ]]; then
         echo "Error: --summary requires a value." >&2
@@ -36,8 +42,8 @@ if [[ -z "${SUMMARY_OVERRIDE// }" ]]; then
   exit 1
 fi
 
-./run_generate_changes.sh
-./run_release.sh --summary "$SUMMARY_OVERRIDE"
+"$SCRIPT_DIR/run_generate_changes.sh"
+"$SCRIPT_DIR/run_release.sh" --summary "$SUMMARY_OVERRIDE"
 rm -f CHANGES.md
 
 echo "Release flow completed via run_release_from_changes.sh"
