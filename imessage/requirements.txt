@@ -1,5 +1,0 @@
-# python3.13
-fpdf2
-markdown
-higgsfield-client
-requests

@@ -1,9 +1,0 @@
-# Rubric
-
-| Section | Not Evident | Approaching Competence | Competent |
-|---------|-------------|------------------------|-----------|
-| **A. Slide Presentation** | A slide presentation is not provided. | The slide presentation does not contain the main points. | The slide presentation contains the main points. |
-| **A1. Slides** | A slide presentation with at least 5 slides is not provided. | The slide presentation has fewer than 5 slides or is missing a title slide. | The slide presentation has 5 or more slides, including a title slide. |
-| **A2. Visual Elements** | A slide presentation with visual elements is not provided. | The slide presentation has fewer than 2 visual elements. | The slide presentation has 2 or more visual elements (e.g., photos, charts, graphs with sources cited). |
-| **C. Sources** | The submission does not include both in-text citations and a reference list for sources that are quoted, paraphrased, or summarized. | The submission includes in-text citations and a reference list; however, the citations or reference list is incomplete or inaccurate. | The submission includes in-text citations for sources that are properly quoted, paraphrased, or summarized and a reference list that accurately identifies the author, date, title, and source location. |
-| **D. Professional Communication** | This submission includes pervasive errors in professional communication related to grammar, sentence fluency, contextual spelling, or punctuation. | This submission includes substantial errors in professional communication related to grammar, sentence fluency, contextual spelling, or punctuation. | This submission includes satisfactory use of grammar, sentence fluency, contextual spelling, and punctuation, which promote accurate interpretation and understanding. |
