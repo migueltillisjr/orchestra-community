@@ -1,3 +1,7 @@
+## release/1.0.12
+
+* Updated.opencode/agents/release.md, run_extract_change_summary.sh, and run_generate_changes.sh to improve release readiness and deployment reliability.
+
 ## release/1.0.11
 
 * Updated release process and documentation. Updated CONTEXT.md files in the report directory. Updated.gitignore, deleted env.example, added example-env and run-clone_agent_repo.sh. Add initial release entry. Prepare for release.
