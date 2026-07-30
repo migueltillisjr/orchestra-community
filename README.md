@@ -5,6 +5,7 @@ This repository contains the helper assets used to work with Orchestra agent rep
 ## What is in this repo?
 
 - [run-clone_agent_repo.sh](run-clone_agent_repo.sh) — clones a Git repository into the Orchestra workspace via the server endpoint.
+- [run_release.sh](run_release.sh) — deterministic release script that handles versioning, changelog updates, commit, push, and tag creation.
 - [example-env](example-env) — a minimal environment template for the clone script.
 - [NOTES.md](NOTES.md) — operational notes and example commands.
 
@@ -54,9 +55,21 @@ You can also override the workspace directory header with -d/--directory if need
 If the target repository has a release agent configured, you can trigger it with:
 
 ```bash
+source .env && export AWS_BEARER_TOKEN_BEDROCK AWS_BEARER_TOKEN && opencode run --agent release "cut a release"
+```
+
+Equivalent wrapped form:
+
+```bash
 source .env && \
 export AWS_BEARER_TOKEN_BEDROCK AWS_BEARER_TOKEN && \
 opencode run --agent release "cut a release"
+```
+
+For deterministic/scripted releases, run:
+
+```bash
+./run_release.sh
 ```
 
 ## Notes
