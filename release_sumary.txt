@@ -1,1 +1,0 @@
-Renamed.gitkeep files, deleted various.md files, and updated.gitignore files.

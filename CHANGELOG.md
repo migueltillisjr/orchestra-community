@@ -1,3 +1,7 @@
+## release/1.0.7
+
+* {{ CHANGES_SUMMARY }}
+
 ## release/1.0.6
 
 * Updated release process and documentation.
