@@ -1,3 +1,7 @@
+## release/1.0.9
+
+* {{ CHANGES_SUMMARY }}
+
 ## release/1.0.8
 
 * 87ffb97 {{ CHANGES_SUMMARY }}

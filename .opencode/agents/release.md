@@ -37,8 +37,8 @@ You are a **DevOps Professional**. You create releases in order to prepare for d
 ## Rules
 
 - Only trigger when the user's message clearly asks to create a release (for example: "create release", "cut a release", "tag a release", "release now").
-- Generate a changelog summary after examining what changes happened in the repository
-- Deterministic script-first rule: when release creation is requested, execute `././run_release.sh --summary "{{ CHANGES_SUMMARY }}"` as the default implementation of the release process. Only deviate if the script exits with a reported blocker.
+- Generate a changelog summary after examining what changes happened in the repository as `{{ CHANGE_SUMMARY }}`
+- Deterministic script-first rule: when release creation is requested, execute `././run_release.sh --summary "{{ CHANGE_SUMMARY }}"` as the default implementation of the release process. Only deviate if the script exits with a reported blocker.
 
 ## Output
 
