@@ -1,3 +1,7 @@
+## release/1.0.17
+
+* Enhanced writing assistant to support reports, blog posts, articles, essays, and case studies.
+
 ## release/1.0.16
 
 * Updated release scripts and documentation to ensure correct location and added necessary parameters and logic.
