@@ -4,16 +4,26 @@ This agent helps you write any structured text step by step, including reports, 
 
 ## What it does
 
-It handles stages 1-6:
+It handles stages 1-8 as a sequential workflow:
 
-1. Scope
-2. Research
-3. Outline
-4. Draft
-5. Revise
-6. Final polish
+1. Stage 1 - Scope: define the topic, audience, goals, and boundaries for the piece.
+2. Stage 2 - Research: gather supporting facts, evidence, and source material.
+3. Stage 3 - Outline: turn the research into a clear structure and flow.
+4. Stage 4 - Draft: write the first full version of the content.
+5. Stage 5 - Revise: strengthen clarity, logic, and completeness.
+6. Stage 6 - Final polish: refine tone, style, formatting, and presentation.
+7. Stage 7 - Evaluate: review the polished draft against your requirements and rubric.
+8. Stage 8 - Revision pass: apply the evaluation feedback and produce the final improved version.
 
-Then other agents can evaluate and improve the draft.
+The stages are meant to build on one another, and each phase uses the appropriate agent:
+
+| Stages | Purpose | Agent |
+|---|---|---|
+| 1-6 | Writing pipeline: scope, research, outline, draft, revise, and polish | Report agent |
+| 7 | Evaluation and quality review | Eval agent |
+| 8 | Revision pass based on evaluation feedback | Revise agent |
+
+The evaluation step checks the draft against your requirements and rubric, then suggests improvements. If you want a stronger pass, you can run the evaluation workflow and then the revision pass.
 
 ## What you can create
 
@@ -46,14 +56,8 @@ Main output files:
 - `report/04_drafting/output/draft.md`
 - `report/05_revision/output/revised_draft.md`
 - `report/06_final_polish/output/final_report.md`
+- `report/07_evaluation/output/evaluation.md`
 
 Final revised file:
 
 - `report/08_revision_pass/output/revised_report.md`
-
-## Simple checklist
-
-1. Define what you are writing in requirements (for example, blog or article).
-2. Run `./run_report.sh`.
-3. Review output files.
-4. Improve inputs and run again if needed.
