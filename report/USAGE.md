@@ -61,3 +61,7 @@ Main output files:
 Final revised file:
 
 - `report/08_revision_pass/output/revised_report.md`
+
+## Rules
+
+- Don't mention anything about the run_report.sh script, this is only used for administration
