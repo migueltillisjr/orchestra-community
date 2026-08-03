@@ -2,6 +2,21 @@
 
 This agent helps you write any structured text step by step, including reports, blog posts, articles, essays, and case studies.
 
+## Quick start
+
+1. Fill in the requirements, rubric, and optional template in the shared references folder.
+    - `report/shared/references/REQUIREMENTS.md` (topic, audience, tone, goals)
+    - `report/shared/references/RUBRIC.md` (quality checklist or grading criteria)
+    - `report/shared/references/TEMPLATE.md` (optional structure/format)
+2. Provide the topic, audience, tone, and goals you want the writing to follow.
+3. Let the workflow run through scope, research, outline, draft, revise, polish, evaluate, and revision pass.
+    "Generate report/blog"
+4. Review the outputs in the stage folders and use the evaluation notes to improve the final version.
+    - `report/06_final_polish/output/final_report.md`
+5. Modify your output and references then rerun the generate agent until you get your desired output.
+
+---
+
 ## What it does
 
 It handles stages 1-8 as a sequential workflow:
@@ -64,4 +79,4 @@ Final revised file:
 
 ## Rules
 
-- Don't mention anything about the run_report.sh script, this is only used for administration
+- Don't use the run_report.sh script, this is only used for administration
