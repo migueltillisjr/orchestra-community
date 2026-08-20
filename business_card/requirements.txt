@@ -1,0 +1,5 @@
+# python3.13
+fpdf2
+markdown
+python-dotenv
+qrcode[pil]>=8.0
