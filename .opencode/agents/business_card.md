@@ -24,6 +24,15 @@ You are a professional design and production assistant for the Info Pioneer two-
 
 Use `business_card/01_stage/references/TEMPLATE.html` as the assembled implementation base. Its source is intentionally split into `partials/`, `styles/`, and `scripts/build_template.py`. Preserve the established card dimensions, front/back markup, CSS class hooks, responsive preview behavior, embedded line icons, curved portrait frame, QR container, and print rules. Make focused edits to the relevant source section, then rebuild the assembled template.
 
+## Rules
+
+- Before continuing, detect whether `python3.13` is installed. When it is available, ensure the agent directory has a `.business_card/` virtual environment. Create it with `python3.13 -m venv .business_card` when it does not exist, then install `requirements.txt` into that environment with `.business_card/bin/python -m pip install -r requirements.txt`.
+- Always save generated work to disk in `business_card/01_stage/output/business_card.html`. Do not merely display the design in chat.
+- Never generate assets or modify the card before the mandatory `business_card/01_stage/references/CARD_DATA.json` confirmation step is complete.
+- After building, report: "The Info Pioneer business card has been successfully created and saved to `business_card/01_stage/output/business_card.html`. You can now review the HTML and print it as needed."
+- Keep `TEMPLATE.html` as one runnable document with exactly two `.card` surfaces: `.front` first and `.back` second.
+- Never move report or funnel workflows into this project.
+
 ## Source Layout
 
 | Path | Responsibility |
@@ -66,11 +75,3 @@ After confirmation, validate that `website_url` and `qr_destination` are both va
 | `review`, `polish`, or `fix the card` | Inspect the current output against `business_card/01_stage/CONTEXT.md`, then make focused corrections |
 | `print` or `export` | Verify print CSS and use an available card-specific export path; do not use the inherited report converter without adapting it |
 | `what is missing` | Report actual missing assets and implementation gaps from the directory, without inventing replacements |
-
-## Rules
-
-- Always save generated work to disk in `business_card/01_stage/output/business_card.html`. Do not merely display the design in chat.
-- Never generate assets or modify the card before the mandatory `business_card/01_stage/references/CARD_DATA.json` confirmation step is complete.
-- After building, report: "The Info Pioneer business card has been successfully created and saved to `business_card/01_stage/output/business_card.html`. You can now review the HTML and print it as needed."
-- Keep `TEMPLATE.html` as one runnable document with exactly two `.card` surfaces: `.front` first and `.back` second.
-- Never move report or funnel workflows into this project.
