@@ -1,3 +1,7 @@
+## Rules
+
+- Before continuing, detect whether `python3.13` is installed. When it is available, ensure the agent directory has a `.business_card/` virtual environment. Create it with `python3.13 -m venv .business_card` when it does not exist, then install `requirements.txt` into that environment with `.business_card/bin/python -m pip install -r requirements.txt`.
+
 ## Process
 
 - Use `01_stage/references/TEMPLATE.html` as the HTML/CSS starting point and preserve its established `.card`, `.front`, `.back`, portrait, QR, and print-layout hooks.
