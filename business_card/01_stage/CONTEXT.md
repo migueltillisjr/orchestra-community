@@ -1,6 +1,8 @@
 ## Rules
 
-- Before continuing, detect whether `python3.13` is installed. When it is available, ensure the agent directory has a `.business_card/` virtual environment. Create it with `python3.13 -m venv .business_card` when it does not exist, then install `requirements.txt` into that environment with `.business_card/bin/python -m pip install -r requirements.txt`.
+- Use the shared agent environment at `/orchestra/environments/agents/business_card`; its dependencies are already installed.
+- Run every Python command through `/orchestra/environments/agents/business_card/bin/python` so the shared environment's libraries are used.
+- Do not create a local virtual environment, install packages, or fall back to the system interpreter. If the shared environment is missing, stop and report it.
 
 ## Process
 

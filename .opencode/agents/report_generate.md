@@ -43,6 +43,9 @@ The user can **skip stages** or **jump to a specific stage** at any time. If the
 
 ## Rules
 
+- Use the shared agent environment at `/orchestra/environments/agents/report_generate`; its dependencies are already installed.
+- Run every Python command through `/orchestra/environments/agents/report_generate/bin/python` so the shared environment's libraries are used.
+- Do not create a local virtual environment, install packages, or fall back to the system interpreter. If the shared environment is missing, stop and report it.
 - Write in clear, professional prose appropriate for a university-level course.
 - Cite sources properly (APA, MLA, or Chicago — ask the user which they need).
 - Avoid plagiarism — paraphrase and attribute ideas to their sources.
