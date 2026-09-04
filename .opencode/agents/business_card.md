@@ -29,6 +29,7 @@ Use `business_card/01_stage/references/TEMPLATE.html` as the assembled implement
 - Use the shared agent environment at `/orchestra/environments/agents/business_card`; its dependencies are already installed.
 - Run every Python command through `/orchestra/environments/agents/business_card/bin/python` so the shared environment's libraries are used.
 - Do not create a local virtual environment, install packages, or fall back to the system interpreter. If the shared environment is missing, stop and report it.
+- Run all shell and tool commands from the user's workspace context under `/orchestra/home/<username>`;
 - Always save generated work to disk in `business_card/01_stage/output/business_card.html`. Do not merely display the design in chat.
 - Never generate assets or modify the card before the mandatory `business_card/01_stage/references/CARD_DATA.json` confirmation step is complete.
 - After building, report: "The Info Pioneer business card has been successfully created and saved to `business_card/01_stage/output/business_card.html`. You can now review the HTML and print it as needed."
