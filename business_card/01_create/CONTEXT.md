@@ -6,8 +6,8 @@
 
 ## Process
 
-- Use `01_stage/references/TEMPLATE.html` as the HTML/CSS starting point and preserve its established `.card`, `.front`, `.back`, portrait, QR, and print-layout hooks.
-- Use `01_stage/references/CARD_DATA.json` as the templated source for the business name, person name, phone, email, website, and QR destination. `website_url` is the displayed website and `qr_destination` is an independent URL that may point elsewhere. Do not hardcode those identity values in generated markup or scripts.
+- Use `01_create/references/TEMPLATE.html` as the HTML/CSS starting point and preserve its established `.card`, `.front`, `.back`, portrait, QR, and print-layout hooks.
+- Use `01_create/references/CARD_DATA.json` as the templated source for the business name, person name, phone, email, website, and QR destination. `website_url` is the displayed website and `qr_destination` is an independent URL that may point elsewhere. Do not hardcode those identity values in generated markup or scripts.
 - Business card size: **3.5 × 2 inches**, landscape orientation.
 - Preserve exact print dimensions while making the browser preview responsive.
 - Display front and back cards side by side in the browser preview.
@@ -74,7 +74,7 @@ Add two subtle oversized translucent circular marks behind the content: one near
 
 ## QR Code
 
-Place a newly generated, real, scannable QR code near the lower center of the back side on every build. Encode only the predefined `qr_destination` URL from `01_stage/references/CARD_DATA.json`; it may be different from the displayed `website_url`. Do not encode a vCard, contact details, or any user-supplied alternate destination. Use a small cream-translucent QR container with a thin cream border and slightly rounded corners. Add the label **Scan for Contact Info** next to or below the code. Preserve strong contrast and sufficient quiet space around the QR code so it remains scannable when printed.
+Place a newly generated, real, scannable QR code near the lower center of the back side on every build. Encode only the predefined `qr_destination` URL from `01_create/references/CARD_DATA.json`; it may be different from the displayed `website_url`. Do not encode a vCard, contact details, or any user-supplied alternate destination. Use a small cream-translucent QR container with a thin cream border and slightly rounded corners. Add the label **Scan for Contact Info** next to or below the code. Preserve strong contrast and sufficient quiet space around the QR code so it remains scannable when printed.
 
 ## Quality Requirements
 
