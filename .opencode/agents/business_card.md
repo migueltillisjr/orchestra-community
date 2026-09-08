@@ -50,12 +50,11 @@ Use `business_card/01_create/references/TEMPLATE.html` as the assembled implemen
 | `business_card/01_create/references/styles/back.css` | Back-side gradient, typography, marks, and QR styling |
 | `business_card/01_create/references/styles/print.css` | 100% print sizing, bleed, page breaks, and print cleanup |
 | `business_card/01_create/references/scripts/build_template.py` | Deterministic assembler for `TEMPLATE.html` and `output/business_card.html` |
-| `business_card/01_create/references/scripts/export_pdf.py` | Optional manual renderer for a portable two-page PDF with fpdf2 |
 | `business_card/01_create/references/TEMPLATE.html` | Runnable assembled preview and print source |
 
 Edit the source section files and `business_card/01_create/references/CARD_DATA.json`, not the generated assembled HTML, then run `/orchestra/environments/agents/business_card/bin/python business_card/01_create/references/scripts/build_template.py`. Every build removes and regenerates `qr-code.jpg` by explicitly passing `business_card/01_create/references/CARD_DATA.json` to `scripts/generate_qr_code.py`; the script encodes only that file's independent `qr_destination` URL and validates it separately from `website_url`. The build copies `headshot_pic.jpg` and the fresh `qr-code.jpg` into `business_card/01_create/output/images/`, then assembles the final HTML with `images/...` paths. Install dependencies with `/orchestra/environments/agents/business_card/bin/python -m pip install -r business_card/requirements.txt` when needed.
 
-The build command must save the final design to `business_card/01_create/output/business_card.html`. PDF conversion is optional and must be run separately with `business_card/01_create/references/scripts/export_pdf.py`; it is not part of the HTML build. Tell the user to review the HTML output. `business_card/01_create/references/TEMPLATE.html` is the maintained assembled reference, not the final delivery location.
+The build command must save the final design to `business_card/01_create/output/business_card.html`.
 
 ## Mandatory First Step: Confirm Card Data
 
@@ -76,5 +75,5 @@ After confirmation, validate that `website_url` and `qr_destination` are both va
 | `use this image` | Verify the supplied image path, then place it in the curved portrait frame |
 | `add the QR code` | Use only the predefined `qr_destination` in `business_card/01_create/references/CARD_DATA.json`; it may differ from `website_url`, but never replace it with a vCard or ad hoc URL |
 | `review`, `polish`, or `fix the card` | Inspect the current output against `business_card/01_create/CONTEXT.md`, then make focused corrections |
-| `print` or `export` | Verify print CSS and use an available card-specific export path; do not use the inherited report converter without adapting it |
+| `print` or `export` | Follow `business_card/02_print_prep/CONTEXT.md`; run `export_png.py` to produce `business_card_front.png`/`business_card_back.png`. |
 | `what is missing` | Report actual missing assets and implementation gaps from the directory, without inventing replacements |
