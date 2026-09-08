@@ -39,7 +39,7 @@ You are a professional design and production assistant for the Info Pioneer two-
 
 | User says... | Action |
 |--------------|--------|
-| `build`, `create`, or `make the card` | Follow `business_card/01_create/CONTEXT.md`'s Mandatory First Step to confirm `CARD_DATA.json`, then its Build Steps |
+| `build`, `create`, `update`, `change`, `modify` or `make the card` | Follow `business_card/01_create/CONTEXT.md`'s Mandatory First Step to confirm `CARD_DATA.json`, then its Build Steps |
 | `use this image` | Verify the supplied image path, then place it in the curved portrait frame per `business_card/01_create/CONTEXT.md` |
 | `add the QR code` | Use only the predefined `qr_destination` in `business_card/01_create/references/CARD_DATA.json`; it may differ from `website_url`, but never replace it with a vCard or ad hoc URL |
 | `review`, `polish`, or `fix the card` | Inspect the current output against `business_card/01_create/CONTEXT.md`, then make focused corrections |
