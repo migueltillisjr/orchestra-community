@@ -3,8 +3,45 @@
 - Use the shared agent environment at `/orchestra/environments/agents/business_card`; its dependencies are already installed.
 - Run every Python command through `/orchestra/environments/agents/business_card/bin/python` so the shared environment's libraries are used.
 - Do not create a local virtual environment, install packages, or fall back to the system interpreter. If the shared environment is missing, stop and report it.
+- Always save generated work to disk in `01_create/output/business_card.html`. Do not merely display the design in chat.
+- Never generate assets or modify the card before the mandatory Confirm Card Data step below is complete.
+- Keep `TEMPLATE.html` as one runnable document with exactly two `.card` surfaces: `.front` first and `.back` second.
+- After this process completes successfully, continue by following `02_print_prep/CONTEXT.md` to copy the card forward and export it.
 
-## Process
+## Source Layout
+
+| Path | Responsibility |
+|------|----------------|
+| `01_create/CONTEXT.md` | Authoritative design brief and exact copy (this file) |
+| `01_create/references/CARD_DATA.json` | Templated business name, person name, phone, email, website, and fixed QR destination |
+| `01_create/references/partials/front.html` | Front card markup and inline icons |
+| `01_create/references/partials/back.html` | Back card markup and QR area |
+| `01_create/references/images/` | Canonical portrait and generated QR assets |
+| `01_create/references/styles/base.css` | Tokens, reset, page preview, shared card rules |
+| `01_create/references/styles/front.css` | Front-side layout and portrait treatment |
+| `01_create/references/styles/back.css` | Back-side gradient, typography, marks, and QR styling |
+| `01_create/references/styles/print.css` | 100% print sizing, bleed, page breaks, and print cleanup |
+| `01_create/references/scripts/build_template.py` | Deterministic assembler for `TEMPLATE.html` and `output/business_card.html` |
+| `01_create/references/scripts/generate_qr_code.py` | Regenerates `qr-code.jpg` from `CARD_DATA.json`'s `qr_destination` |
+| `01_create/references/TEMPLATE.html` | Runnable assembled preview and print source |
+
+## Mandatory First Step: Confirm Card Data
+
+Before building, generating a QR code, copying assets, editing card markup, or modifying the assembled output, always read `01_create/references/CARD_DATA.json` and show the user its current values in a readable JSON block. Then ask exactly:
+
+> Please confirm that the `01_create/references/CARD_DATA.json` information is correct before I continue. Reply `confirm` to proceed, or provide the corrections you want written to the file.
+
+Stop and wait for the user's response. Do not continue on implied approval, silence, or a general request to build. If the user provides corrections, update only the requested fields in `01_create/references/CARD_DATA.json`, display the complete updated JSON again, and ask for confirmation again. Continue only after an explicit confirmation such as `confirm`, `yes, it is correct`, or equivalent.
+
+After confirmation, validate that `website_url` and `qr_destination` are both valid HTTP(S) URLs. They may be different. Only then inspect assets, generate the QR code, and build the card.
+
+## Build Steps
+
+Edit the source section files (`partials/`, `styles/`) and `01_create/references/CARD_DATA.json`, not the generated assembled HTML, then run `/orchestra/environments/agents/business_card/bin/python 01_create/references/scripts/build_template.py`. Every build removes and regenerates `qr-code.jpg` by explicitly passing `01_create/references/CARD_DATA.json` to `scripts/generate_qr_code.py`; the script encodes only that file's independent `qr_destination` URL and validates it separately from `website_url`. The build copies `headshot_pic.jpg` and the fresh `qr-code.jpg` into `01_create/output/images/`, then assembles the final HTML with `images/...` paths. Install dependencies with `/orchestra/environments/agents/business_card/bin/python -m pip install -r business_card/requirements.txt` when needed.
+
+The build command must save the final design to `01_create/output/business_card.html`. Tell the user to review the HTML output; `01_create/references/TEMPLATE.html` is the maintained assembled reference, not the final delivery location.
+
+## Design Process
 
 - Use `01_create/references/TEMPLATE.html` as the HTML/CSS starting point and preserve its established `.card`, `.front`, `.back`, portrait, QR, and print-layout hooks.
 - Use `01_create/references/CARD_DATA.json` as the templated source for the business name, person name, phone, email, website, and QR destination. `website_url` is the displayed website and `qr_destination` is an independent URL that may point elsewhere. Do not hardcode those identity values in generated markup or scripts.
