@@ -24,19 +24,52 @@ except ImportError:
     sys.exit(1)
 
 STAGE_ROOT = Path(__file__).resolve().parent.parent.parent
-HTML_FILE = STAGE_ROOT / "output" / "business_card.html"
-FRONT_PNG = STAGE_ROOT / "output" / "business_card_front.png"
-BACK_PNG = STAGE_ROOT / "output" / "business_card_back.png"
+CREATE_OUTPUT = STAGE_ROOT.parent / "01_create" / "output"
+PRINT_PREP_OUTPUT = STAGE_ROOT / "output"
+FRONT_PNG = PRINT_PREP_OUTPUT / "business_card_front.png"
+BACK_PNG = PRINT_PREP_OUTPUT / "business_card_back.png"
 
 # card is authored at 3.5x2in; render at this many pixels per inch for print quality
 DPI = 600
 DEVICE_SCALE_FACTOR = DPI / 96  # Playwright viewport/screenshot scaling is expressed relative to 96 CSS dpi
 
+# images the card HTML references via relative "images/..." src paths
+REQUIRED_IMAGES = ("headshot_pic.jpg", "qr-code.jpg")
+
+
+def source_is_complete(output_dir: Path) -> bool:
+    """An output dir only works as a render source if it has both the HTML
+    and the images it references, so a partial copy (e.g. html but no
+    images/) isn't silently used."""
+    if not (output_dir / "business_card.html").is_file():
+        return False
+    images_dir = output_dir / "images"
+    return all((images_dir / name).is_file() for name in REQUIRED_IMAGES)
+
+
+def resolve_html_file() -> Path:
+    """Prefer the copied 02_print_prep/output/business_card.html + images/,
+    but fall back to the 01_create stage's originals so a missed or partial
+    copy step (html without images, or neither) doesn't block the export."""
+    if source_is_complete(PRINT_PREP_OUTPUT):
+        return PRINT_PREP_OUTPUT / "business_card.html"
+    if source_is_complete(CREATE_OUTPUT):
+        print(
+            f"{PRINT_PREP_OUTPUT} is missing business_card.html and/or its images/; "
+            f"rendering from {CREATE_OUTPUT} instead."
+        )
+        return CREATE_OUTPUT / "business_card.html"
+    print(
+        f"Missing business_card.html and/or required images in both "
+        f"{PRINT_PREP_OUTPUT} and {CREATE_OUTPUT}.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
 
 def main() -> None:
-    if not HTML_FILE.is_file():
-        print(f"Missing {HTML_FILE}; run the HTML build step first.", file=sys.stderr)
-        sys.exit(1)
+    html_file = resolve_html_file()
+    PRINT_PREP_OUTPUT.mkdir(parents=True, exist_ok=True)
 
     with sync_playwright() as p:
         try:
@@ -56,7 +89,7 @@ def main() -> None:
             sys.exit(1)
 
         page = browser.new_page(device_scale_factor=DEVICE_SCALE_FACTOR)
-        page.goto(HTML_FILE.resolve().as_uri())
+        page.goto(html_file.resolve().as_uri())
         page.wait_for_load_state("networkidle")
 
         front = page.locator(".card.front")
