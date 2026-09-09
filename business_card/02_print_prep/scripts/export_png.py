@@ -23,7 +23,7 @@ except ImportError:
     print("Missing dependency. Install the project's requirements.txt first.", file=sys.stderr)
     sys.exit(1)
 
-STAGE_ROOT = Path(__file__).resolve().parent.parent.parent
+STAGE_ROOT = Path(__file__).resolve().parent.parent
 CREATE_OUTPUT = STAGE_ROOT.parent / "01_create" / "output"
 PRINT_PREP_OUTPUT = STAGE_ROOT / "output"
 FRONT_PNG = PRINT_PREP_OUTPUT / "business_card_front.png"

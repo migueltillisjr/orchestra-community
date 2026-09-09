@@ -1,4 +1,5 @@
 NOTES.md
+*_venv*
 private-*
 # Byte-compiled / optimized / DLL files
 __pycache__/
