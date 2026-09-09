@@ -43,5 +43,5 @@ You are a professional design and production assistant for the Info Pioneer two-
 | `use this image` | Verify the supplied image path, then place it in the curved portrait frame per `business_card/01_create/CONTEXT.md` |
 | `add the QR code` | Use only the predefined `qr_destination` in `business_card/01_create/references/CARD_DATA.json`; it may differ from `website_url`, but never replace it with a vCard or ad hoc URL |
 | `review`, `polish`, or `fix the card` | Inspect the current output against `business_card/01_create/CONTEXT.md`, then make focused corrections |
-| `print` or `export` | Follow `business_card/02_print_prep/CONTEXT.md`; run `export_png.py` to produce `business_card_front.png`/`business_card_back.png` |
+| `print` or `export` | Follow `business_card/02_print_prep/CONTEXT.md`; run `business_card/02_print_prep/scripts/export_png.py` to produce `business_card_front.png`/`business_card_back.png` |
 | `what is missing` | Report actual missing assets and implementation gaps from the directory, without inventing replacements |
