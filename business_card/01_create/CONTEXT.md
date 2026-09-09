@@ -21,7 +21,7 @@
 | `business_card/01_create/references/styles/front.css` | Front-side layout and portrait treatment |
 | `business_card/01_create/references/styles/back.css` | Back-side gradient, typography, marks, and QR styling |
 | `business_card/01_create/references/styles/print.css` | 100% print sizing, bleed, page breaks, and print cleanup |
-| `business_card/01_create/references/scripts/build_template.py` | Deterministic assembler for `TEMPLATE.html` and `output/business_card.html` |
+| `business_card/01_create/references/scripts/build_template.py` | Deterministic assembler for businss card,  `TEMPLATE.html` and `output/business_card.html` |
 | `business_card/01_create/references/scripts/generate_qr_code.py` | Regenerates `business_card/01_create/output/images/qr-code.jpg` from `business_card/01_create/references/CARD_DATA.json`'s `qr_destination` |
 | `business_card/01_create/references/TEMPLATE.html` | Runnable assembled preview and print source |
 
@@ -35,11 +35,14 @@ Stop and wait for the user's response. Do not continue on implied approval, sile
 
 After confirmation, validate that `website_url` and `qr_destination` are both valid HTTP(S) URLs. They may be different. Only then inspect assets, generate the QR code, and build the card.
 
-## Build Steps
+## Process
 
-Edit the source section files (`business_card/01_create/references/partials/`, `business_card/01_create/references/styles/`) and `business_card/01_create/references/CARD_DATA.json`, not the generated assembled HTML, then run `/orchestra/environments/agents/business_card/bin/python business_card/01_create/references/scripts/build_template.py`. Every build removes and regenerates `qr-code.jpg` by explicitly passing `business_card/01_create/references/CARD_DATA.json` to `business_card/01_create/references/scripts/generate_qr_code.py`; the script encodes only that file's independent `qr_destination` URL and validates it separately from `website_url`. The build copies `headshot_pic.jpg` and the fresh `qr-code.jpg` into `business_card/01_create/output/images/`, then assembles the final HTML with `images/...` paths. Install dependencies with `/orchestra/environments/agents/business_card/bin/python -m pip install -r business_card/requirements.txt` when needed.
-
-The build command must save the final design to `business_card/01_create/output/business_card.html`. Tell the user to review the HTML output; `business_card/01_create/references/TEMPLATE.html` is the maintained assembled reference, not the final delivery location.
+1. Edit the source section files (`business_card/01_create/references/partials/`, `business_card/01_create/references/styles/`) and `business_card/01_create/references/CARD_DATA.json` — never the generated assembled HTML directly.
+2. Install dependencies with `/orchestra/environments/agents/business_card/bin/python -m pip install -r business_card/requirements.txt` when needed.
+3. Run `/orchestra/environments/agents/business_card/bin/python business_card/01_create/references/scripts/build_template.py`.
+4. Every build removes and regenerates `qr-code.jpg` by explicitly passing `business_card/01_create/references/CARD_DATA.json` to `business_card/01_create/references/scripts/generate_qr_code.py`; the script encodes only that file's independent `qr_destination` URL and validates it separately from `website_url`.
+5. The build copies `headshot_pic.jpg` and the fresh `qr-code.jpg` into `business_card/01_create/output/images/`, then assembles the final HTML with `images/...` paths, saving it to `business_card/01_create/output/business_card.html`.
+6. Tell the user to review the HTML output; `business_card/01_create/references/TEMPLATE.html` is the maintained assembled reference, not the final delivery location.
 
 ## Design Process
 
