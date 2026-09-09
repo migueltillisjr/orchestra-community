@@ -3,7 +3,6 @@
 - Use the shared agent environment at `/orchestra/environments/agents/business_card`; its dependencies are already installed.
 - Run every Python command through `/orchestra/environments/agents/business_card/bin/python` so the shared environment's libraries are used.
 - Do not create a local virtual environment, install packages, or fall back to the system interpreter. If the shared environment is missing, stop and report it.
-- Run all shell and tool commands from the user's workspace context under `/orchestra/home/<username>`.
 - `business_card/02_print_prep/scripts/export_png.py` uses Playwright's own bundled headless Chromium (not a system browser), so it runs on headless servers/containers with no display and no workstation browser install. If Chromium isn't installed yet for this environment, run `/orchestra/environments/agents/business_card/bin/python -m playwright install --with-deps chromium` once, then retry.
 
 ## Process
