@@ -15,7 +15,7 @@ The maintained source lives in `website/01_generate_site/references/`. `website/
 | Component | Description | How to use it | Location |
 | --- | --- | --- | --- |
 | Page shell | `<head>` (meta, fonts, stylesheet) plus `@include` markers wiring the partials together | Edit for global `<head>` changes (title, description, fonts) or to reorder/add sections | `website/01_generate_site/references/template.html` |
-| Build script | Reads `website/01_generate_site/references/template.html`, inlines each `website/01_generate_site/references/partials/*.html`, writes the result | Run `python3 website/01_generate_site/references/build_site.py` from the repository root after any partial edit to regenerate `website/01_generate_site/output/index.html` | `website/01_generate_site/references/build_site.py` |
+| Build script | Reads `website/01_generate_site/references/template.html`, inlines each `website/01_generate_site/references/partials/*.html`, writes the result | Run `/orchestra/environments/agents/website/bin/python website/01_generate_site/references/build_site.py` from the repository root after any partial edit to regenerate `website/01_generate_site/output/index.html` | `website/01_generate_site/references/build_site.py` |
 | Header/nav | Logo, brand text, mobile menu toggle, main nav links | Edit nav items, logo image, or brand copy | `website/01_generate_site/references/partials/header.html` |
 | Hero | Headline, intro copy, primary/secondary CTAs, hero images | Edit the main above-the-fold pitch and hero imagery | `website/01_generate_site/references/partials/hero.html` |
 | Trust strip | Four short focus-area callouts under the hero | Edit the quick-scan credibility bullets | `website/01_generate_site/references/partials/trust-strip.html` |
@@ -31,10 +31,6 @@ The maintained source lives in `website/01_generate_site/references/`. `website/
 | Styling | All responsive CSS | Edit visual design, spacing, colors, breakpoints | `website/01_generate_site/references/style.css` |
 | Behavior | Mobile nav toggle, scroll-reveal animation, footer year, (disabled) form handler | Edit interactive behavior | `website/01_generate_site/references/script.js` |
 
-
-## Visual System
-
-- Follow the shared visual direction in `website/shared/references/DIRECTIONS.md` while generating the first implementation.
 
 ## Quality Requirements
 
