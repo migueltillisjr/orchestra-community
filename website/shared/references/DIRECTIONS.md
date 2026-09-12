@@ -1,3 +1,7 @@
+# Mandatory Rule
+
+**IMPORTANT** Only do as defined in *.md files. Nothing else.
+
 # Website Directions
 
 These directions apply to every stage of the Pray for America's Youth website workflow. Each stage `CONTEXT.md` adds only phase-specific instructions.
