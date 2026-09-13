@@ -41,7 +41,7 @@ button, input, select, textarea { font: inherit; }
 }
 .eyebrow.light { color: #9be1f8; }
 
-h1, h2, h3 { font-family: "Cormorant", "BioRhyme", system-ui, sans-serif; margin: 0; line-height: 1.06; letter-spacing: -.035em; }
+h1, h2, h3 { font-family: "Manrope", system-ui, sans-serif; margin: 0; line-height: 1.06; letter-spacing: -.035em; }
 h1 { font-size: clamp(3.5rem, 7vw, 6.8rem); }
 h2 { font-size: clamp(2.4rem, 5vw, 4.6rem); }
 h3 { font-size: 1.55rem; }
