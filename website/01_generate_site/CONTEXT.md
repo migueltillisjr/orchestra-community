@@ -26,4 +26,4 @@
     | Styling | All responsive CSS | Edit visual design, spacing, colors, breakpoints | `/orchestra/home/{USER_NAME}/website/shared/references/site/style.css` |
     | Behavior | Mobile nav toggle, scroll-reveal animation, footer year, (disabled) form handler | Edit interactive behavior | `/orchestra/home/{USER_NAME}/website/shared/references/site/script.js` |
 
-2. From the repository root, run `/orchestra/environments/agents/website/bin/python /orchestra/home/{USER_NAME}/website/shared/references/site/build_site.py` to rebuild the website.
+2. From the repository root, run `/orchestra/environments/agents/website/bin/python /orchestra/home/{USER_NAME}/website/shared/references/site/build_site.py --output-dir /orchestra/home/{USER_NAME}/website/shared/references/site/` to rebuild the website.
