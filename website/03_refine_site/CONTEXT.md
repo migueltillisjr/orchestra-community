@@ -6,8 +6,8 @@
 
 - Read `/orchestra/home/{USER_NAME}/website/shared/references/RUBRIC.md` before refining. Use the rubric and release gates to decide which evaluation findings are blockers, high-priority fixes, or acceptable residual gaps.
 - Read `/orchestra/home/{USER_NAME}/website/02_evaluate_site/output/EVALUATION.md` as the required refinement brief. If it is missing, stop and report that evaluation must be completed before refinement; do not invent failed findings.
-- Copy the previous-stage respective output items in `/orchestra/home/{USER_NAME}/website/02_evaluate_site/output/*` into `/orchestra/home/{USER_NAME}/website/03_evaluate_site/output/*` as the current stage working artifact.
-- Apply the corrections in the maintained website source, rebuild or regenerate the final page, and ensure the final deliverables are saved at `/orchestra/home/{USER_NAME}/website/03_refine_site/output/*`.
+- Leverage the evaluation artifacts from `/orchestra/home/{USER_NAME}/website/02_evaluate_site/output/*` as the current stage working input from the shared location.
+- Apply the corrections in the maintained website source from `/orchestra/home/{USER_NAME}/website/shared/references/site/`, rebuild or regenerate the final page, and ensure the final deliverables are saved at `/orchestra/home/{USER_NAME}/website/03_refine_site/output/*`.
 - Re-run the affected checks and then perform the common verification checks in `/orchestra/home/{USER_NAME}/website/shared/references/DIRECTIONS.md`.
 - Append to file `/orchestra/home/{USER_NAME}/website/03_refine_site/output/REFINE_CHANGES.md`. For each evaluation failure, summarize the finding, affected criterion or release gate, change made, verification performed, and any remaining limitation.
 
